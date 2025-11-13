@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   webamgs:
-    image: ghcr.io/miguesaint/miguel_sosa:1.0.0
+    image: ghcr.io/miguesaint/devopsquintoamsg:1.0.0
     deploy:
       replicas: 1
       labels:
