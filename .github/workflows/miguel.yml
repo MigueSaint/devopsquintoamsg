@@ -29,5 +29,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/miguesaint/miguel_sosa:1.0.0
+          tags: ghcr.io/miguesaint/devopsquintoamsg:1.0.0
           
