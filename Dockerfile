@@ -1,0 +1,17 @@
+# IMAGEN BASE
+FROM python:3.12-slim
+
+# CREAR DIRECTORIO DE TRABAJO
+WORKDIR /app
+
+# COPIAR LOS ARCHIVOS NECESARIOS
+COPY . .
+
+# INSTALAR DEPENDENCIAS
+RUN pip install --no-cache-dir -r requirements.txt
+
+# EXPONER EL PUERTO 80
+EXPOSE 80
+
+# EJECUTAR LA APLICACIÓN
+CMD ["python", "app.py"]

@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  webamgs:
+    image: ghcr.io/miguesaint/miguel_sosa:1.0.0
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.webamgs.entrypoints=http"
+        - "traefik.http.routers.webamgs.rule=Host(`webamgs.byronrm.com`)"
+        - "traefik.http.middlewares.webamgs-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.webamgs.middlewares=webamgs-https-redirect"
+        - "traefik.http.routers.webamgs-secure.entrypoints=https"
+        - "traefik.http.routers.webamgs-secure.rule=Host(`webamgs.byronrm.com`)"
+        - "traefik.http.routers.webamgs-secure.tls=true"
+        - "traefik.http.routers.webamgs-secure.tls.certresolver=http"
+        - "traefik.http.routers.webamgs-secure.service=webamgs"
+        - "traefik.http.services.webamgs.loadbalancer.server.port=80"
+        - "traefik.docker.network=traefik-public"
+    networks:
+      - traefik-public
+
+networks:
+  traefik-public:
+    external: true
